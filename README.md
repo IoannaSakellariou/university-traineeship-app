@@ -224,6 +224,3 @@ TraineeshipAppApplication.java
  
 ---
  
-## Author
- 
-Developed for the Software Engineering course project at the University of Ioannina.
