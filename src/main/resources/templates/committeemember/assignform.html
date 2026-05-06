@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Assign Professor to Traineeship</title>
+    <link rel="stylesheet" th:href="@{/css/common-style.css}">
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Assign Professor to Traineeship</h2>
+
+    <!-- Dropdown strategy selection -->
+    <form th:action="@{/committeemember/assign/{positionId}/{studentId}(positionId=${positionId}, studentId=${studentId})}" method="get">
+	    <input type="hidden" name="positionId" th:value="${positionId}" />
+	    <input type="hidden" name="studentId" th:value="${studentId}" />
+	
+	    <label for="strategy">Select Assignment Strategy:</label>
+	    <select name="strategy" id="strategy" required>
+	        <option value="interests" th:selected="${strategy == 'interests'}">Based on Interests</option>
+	        <option value="load" th:selected="${strategy == 'load'}">Based on Load</option>
+	    </select>
+	
+	    <button type="submit">Find Matching Professors</button>
+	</form>
+
+
+    <!-- Matching professors list -->
+    <div th:if="${#lists.isEmpty(professors) == false}">
+        <h3>Matching Professors</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Interests</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="prof : ${professors}">
+                    <td th:text="${prof.professorName}">Professor Name</td>
+                    <td th:text="${prof.interests}">Interests</td>
+                    <td>
+                        <form th:action="@{/committeemember/assign}" method="post" th:object="${prof}">
+                            <input type="hidden" name="positionId" th:value="${positionId}" />
+                            <input type="hidden" name="studentId" th:value="${studentId}" />
+                            <input type="hidden" name="professorId" th:value="${prof.id}" />
+                            <input type="hidden" name="strategy" th:value="${strategy}" />
+                            <button type="submit">Assign</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="back-link">
+        <a href="/committeemember/dashboard">← Back to Dashboard</a>
+    </div>
+</div>
+
+</body>
+</html>

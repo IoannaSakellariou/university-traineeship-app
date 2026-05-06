@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Traineeship History</title>
+    <link rel="stylesheet" th:href="@{/css/common-style.css}">
+
+</head>
+<body>
+
+<header>
+    <h1>Traineeship History</h1>
+</header>
+
+<div class="container">
+    <div class="history-box">
+        <h2>Completed Traineeships</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Company</th>
+                    <th>Supervisor</th>
+                    <th>Period</th>
+                    <th>Passed</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="position : ${positions}">
+                    <td th:text="${position.title}">Software Intern</td>
+                    <td th:text="${position.company.companyName}">Company ABC</td>
+                    <td th:text="${position.supervisor.professorName}">Prof. Smith</td>
+                    <td>
+                        <span th:text="${position.fromDate}">2025-01-01</span> -
+                        <span th:text="${position.toDate}">2025-04-30</span>
+                    </td>
+                    <td th:text="${position.passFailGrade ? 'Yes' : 'No'}">Yes</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="/student/dashboard" class="back">← Back to Dashboard</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 TraineeshipApp – All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

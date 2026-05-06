@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Company Profile</title>
+    <link rel="stylesheet" th:href="@{/css/edit.css}">
+</head>
+<body>
+
+<header>
+    <h1>Edit Your Profile</h1>
+</header>
+
+<div class="container">
+    <h2>Edit Company Details</h2>
+    <form th:action="@{/company/edit}" th:object="${company}" method="post">
+        <label for="companyName">Company Name</label>
+        <input type="text" id="companyName" th:field="*{companyName}" required>
+
+        <label for="companyLocation">Company Location</label>
+        <input type="text" id="companyLocation" th:field="*{companyLocation}" required>
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <div class="back-link">
+        <a href="/company/dashboard">← Back to Dashboard</a>
+    </div>
+</div>
+
+</body>
+</html>

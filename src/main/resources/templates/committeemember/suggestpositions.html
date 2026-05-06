@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Suggested Positions for Student</title>
+    <link rel="stylesheet" th:href="@{/css/common-style.css}">
+
+</head>
+<body>
+
+<h2>Suggested Positions for <span th:text="${studentUsername}">Student</span></h2>
+
+<form th:action="@{/committeemember/suggestpositions/{studentId}(studentId=${studentId})}" method="get">
+    <label for="strategy">Change Search Strategy:</label>
+    <select name="strategy" id="strategy">
+        <option value="interests" th:selected="${currentStrategy == 'interests'}">Based on Interests</option>
+        <option value="location" th:selected="${currentStrategy == 'location'}">Based on Location</option>
+        <option value="both" th:selected="${currentStrategy == 'both'}">Based on Interests & Location</option>
+    </select>
+    <button type="submit">Update Suggestions</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Topics</th>
+            <th>Skills</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="pos : ${positions}">
+            <td th:text="${pos.title}">Title</td>
+            <td th:text="${pos.company.companyName}">Company</td>
+            <td th:text="${pos.company.companyLocation}">Location</td>
+            <td th:text="${pos.topics}">Topics</td>
+            <td th:text="${pos.skills}">Skills</td>
+            <td>
+				<form th:action="@{'/committeemember/accept/' + ${pos.id} + '/' + ${studentId}}" method="post"class="inline-reject" 
+				      style="display:inline;">
+				    <button type="submit" class="btn btn-assign">Assign</button>
+				</form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="back-link">
+	<a class="button" href="/committeemember/applications">← Back to Applications</a>
+	<a class="button" href="/committeemember/dashboard">← Back to Dashboard</a>
+	
+</div>
+
+</body>
+</html>

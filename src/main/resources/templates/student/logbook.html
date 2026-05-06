@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Traineeship Logbook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #4a148c; /* Dark purple */
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+
+        .readonly-log {
+            background-color: #eee;
+            height: 250px;
+        }
+
+        .new-entry {
+            height: 120px;
+        }
+
+        button {
+            background-color: #b39ddb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #9c8cc1;
+        }
+
+       .back-link {
+		    margin-top: 30px;
+		    text-align: center;
+		}
+		
+		.back-link a {
+		    color: #5e35b1;
+		    font-weight: bold;
+		}
+
+    </style>
+</head>
+<body>
+
+<h1>Logbook</h1>
+
+<p><strong>Traineeship Title:</strong> <span th:text="${position.title}"></span></p>
+
+
+<div>
+    <label for="previousLogs"><strong>Previous Entries</strong></label>
+    <textarea id="previousLogs" class="readonly-log" readonly th:text="${position.studentLogBook}"></textarea>
+</div>
+
+
+<form th:action="@{/student/logbook}" method="post">
+    <label for="logbookText"><strong>New Entry</strong></label>
+    <textarea id="logbookText" name="logbookText" class="new-entry" placeholder="Write about your day..."></textarea>
+    <br>
+    <button type="submit">Save Logbook</button>
+</form>
+
+<div class="back-link">
+    <a href="/student/dashboard">← Back to Dashboard</a>
+</div>
+
+</body>
+</html>

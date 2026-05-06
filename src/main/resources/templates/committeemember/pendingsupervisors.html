@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Assign Supervisors</title>
+    <link rel="stylesheet" th:href="@{/css/common-style.css}">
+
+</head>
+<body>
+
+<h2>Assign Supervisors to Traineeships</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Student</th>
+            <th>Company</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="position : ${positions}">
+            <td th:text="${position.title}">Title</td>
+            <td th:text="${position.student.AM}">student</td>
+            <td th:text="${position.company.companyName}">company</td>
+            <td>
+                <a th:href="@{/committeemember/assign/{positionId}/{studentId}(positionId=${position.id}, studentId=${position.student.id})}" class="btn">Assign</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="back">
+    <a href="/committeemember/dashboard">← Back to Dashboard</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Supervised Positions</title>
+    <link rel="stylesheet" th:href="@{/css/common-style.css}">
+
+</head>
+<body>
+
+<h2>My Supervised Traineeship Positions</h2>
+
+<table>
+	<thead>
+    	<tr>
+        	<th>Title</th>
+        	<th>Company</th>
+        	<th>Topics</th>
+        	<th>Status</th>
+        	<th>Student</th>
+        	<th>Action</th>
+	    </tr>
+	</thead>
+	<tbody>
+	<tr th:each="pos : ${positions}">
+	    <td th:text="${pos.title}"></td>
+	    <td th:text="${pos.company.companyName}"></td>
+	    <td th:text="${pos.topics}"></td>
+	    <td th:text="${pos.completed} ? 'Completed - ' + (${pos.passFailGrade} ? 'PASS' : 'FAIL') : 'In Progress'"></td>
+	    <td th:text="${pos.student != null ? pos.student.studentName : 'Not assigned'}"></td>
+	    <td>
+	        <span th:if="${pos.student != null}">
+	            <a  th:if="${!pos.completed}" th:href="@{'/professor/evaluate/' + ${pos.id}}" style="background-color:#5e35b1;color:white;padding:6px 12px;border-radius:5px;text-decoration:none;">Evaluate</a>
+	            <span th:if="${pos.completed}">Already Completed</span>
+	        </span>
+
+	    </td>
+	</tr>
+	</tbody>
+</table>
+
+<a class="back" href="/professor/dashboard">← Back to Dashboard</a>
+
+</body>
+</html>

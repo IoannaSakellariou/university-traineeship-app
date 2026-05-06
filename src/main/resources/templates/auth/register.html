@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" th:href="@{/css/logreghome.css}">
+
+
+    <title>Traineeship Application Registration</title>
+    
+    
+    
+</head>
+
+<body>
+
+<div class="container">
+    <div class="form-container">
+        <h3>Register</h3>
+        <form action="#" th:action="@{/save}" th:object="${user}" method="post">
+
+            <div class="form-group">
+                <input type="text" th:field="*{username}" class="form-control" placeholder="User Name" required/>
+                <div class="error-message" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+            </div>
+
+            <div class="form-group">
+                <input type="password" th:field="*{password}" class="form-control" placeholder="Password" required/>
+                <div class="error-message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+            </div>
+
+            <div class="form-group">
+                <select th:field="*{role}" class="form-control" required>
+                    <option value="">Select Role</option>
+                    
+        			<option value="STUDENT">Student</option>
+        			<option value="PROFESSOR">Professor</option>
+        			<option value="COMPANY">Company</option>
+       	 			<option value="COMMITTEE_MEMBER">Committe Member</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-info btn-block">Register</button>
+            <a th:href="@{/login}" class="btn btn-primary btn-block">Login</a>
+
+            <div th:if="${param.error}" class="error-message text-center mt-3">
+                Registration Error.
+            </div>
+
+            <div class="text-success text-center mt-2" th:utext="${successMessage}"></div>
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

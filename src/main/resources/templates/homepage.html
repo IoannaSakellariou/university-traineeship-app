@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traineeship Application</title>
+    <link rel="stylesheet" th:href="@{/css/logreghome.css}">
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Welcome to the Traineeship App</h2>
+
+    <!-- Anonymous user -->
+    <div sec:authorize="hasRole('ROLE_ANONYMOUS')">
+        <a th:href="@{/login}" class="btn btn-primary">Login</a>
+        <a th:href="@{/register}" class="btn btn-info">Register</a>
+    </div>
+
+    <!-- Authenticated user -->
+    <div sec:authorize="isAuthenticated()">
+        <p><strong>Logged in as:</strong> <span sec:authentication="name"></span></p>
+        <p><strong>Role:</strong> <span sec:authentication="authorities"></span></p>
+
+        <div class="role-section">
+            <p sec:authorize="hasAuthority('STUDENT')">
+                <a th:href="@{/student/dashboard}" class="btn btn-primary">Student Dashboard</a>
+            </p>
+            <p sec:authorize="hasAuthority('PROFESSOR')">
+                <a th:href="@{/professor/dashboard}" class="btn btn-primary">Professor Dashboard</a>
+            </p>
+            <p sec:authorize="hasAuthority('COMPANY')">
+                <a th:href="@{/company/dashboard}" class="btn btn-primary">Company Dashboard</a>
+            </p>
+            <p sec:authorize="hasAuthority('COMMITTEE_MEMBER')">
+                <a th:href="@{/committeemember/dashboard}" class="btn btn-primary">Committee Dashboard</a>
+            </p>
+        </div>
+
+        <a th:href="@{/logout}" class="btn btn-danger">Logout</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+
+
+    
+    
+    <title>Committee Member Dashboard</title>
+
+</head>
+<body>
+
+<header>
+    <h1>Welcome, <span sec:authentication="name"></span>!</h1>
+</header>
+
+<div class="container">
+    <div class="dashboard-box">
+        <h2>Committee Member Dashboard</h2>
+
+        <div class="button-group">
+            <a href="/committeemember/applications" class="btn">Show Student Applications</a>
+            <a href="/committeemember/inprogress" class="btn">View In-Progress Traineeships</a>
+            <a href="/committeemember/history" class="btn">View Completed Internships</a>
+            <a href="/committeemember/pendingsupervisors" class="btn">Assign Supervisors</a>
+            
+
+            
+            <form action="/logout" method="post" style="margin: 0;">
+                <button type="submit" class="btn logout-btn">Logout</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 TraineeshipApp – All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

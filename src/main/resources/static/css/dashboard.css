@@ -1,0 +1,87 @@
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #b39ddb;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .container {
+            padding: 30px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .dashboard-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #5e35b1;
+            margin-bottom: 25px;
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: #b39ddb;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #9e8bc4;
+        }
+
+        .logout-btn {
+            background-color: #ef5350;
+        }
+
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .company-info {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #b39ddb;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .traineeship-status {
+            color: #5e35b1;
+        }
+      
+
+      

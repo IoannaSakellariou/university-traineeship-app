@@ -1,0 +1,79 @@
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: white;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #5e35b1;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #5e35b1;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 100%; /* Προσθήκη για να πιάσει όλο το πλάτος */
+            margin-bottom: 15px; /* Κενό μεταξύ των πεδίων */
+        }
+
+        input[type="checkbox"] {
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #B39DDB;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #9C8CC1;
+        }
+
+        .info {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            color: #5e35b1;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }

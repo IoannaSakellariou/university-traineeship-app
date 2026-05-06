@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Completed Traineeships</title>
+    <link rel="stylesheet" th:href="@{/css/common-style.css}">
+
+</head>
+<body>
+
+<header>
+    <h1>Completed Internships</h1>
+</header>
+
+<div class="container">
+    <div class="dashboard-box">
+        <h2>Internship History</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Position Title</th>
+                    <th>Student</th>
+                    <th>Supervisor</th>
+                    <th>Company</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pos : ${positions}">
+                    <td th:text="${pos.title}">Traineeship Title</td>
+                    <td th:text="${pos.student?.studentName ?: 'N/A'}">Student Name</td>
+                    <td th:text="${pos.supervisor?.professorName ?: 'N/A'}">Professor</td>
+                    <td th:text="${pos.company?.companyName ?: 'N/A'}">Company</td>
+                    <td th:text="${pos.passFailGrade != null ? (pos.passFailGrade ? 'Pass' : 'Fail') : 'N/A'}">Result</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="/committeemember/dashboard" class="back-link">← Back to Dashboard</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 TraineeshipApp – All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

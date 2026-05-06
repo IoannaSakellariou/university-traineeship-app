@@ -1,0 +1,221 @@
+/* ==== BASE STYLES ==== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2, h3, h4 {
+    color: #5e35b1;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+a {
+    color: #5e35b1;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #4527a0;
+    text-decoration: underline;
+}
+
+/* ==== CONTAINER ==== */
+.container, .dashboard-box {
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ==== TABLE ==== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #b39ddb;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* ==== BUTTONS ==== */
+button, .btn {
+    background-color: #5e35b1;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+button:hover, .btn:hover {
+    background-color: #4527a0;
+}
+
+/* Specialized buttons */
+.btn-assign {
+    background-color: #5e35b1;
+}
+
+.reject-btn {
+    background-color: #f44336;
+}
+
+.reject-btn:hover {
+    background-color: #d32f2f;
+}
+
+.back-link {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.back-link a {
+    color: #5e35b1;
+    font-weight: bold;
+}
+
+.back-link a:hover {
+    background-color: #ede7f6;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* ==== MODAL ==== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ==== FORM ==== */
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    display: block;
+    margin-top: 10px;
+    color: #5e35b1;
+}
+
+select, input[type="text"], input[type="number"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+select:focus, input:focus, textarea:focus {
+    border-color: #b39ddb;
+    outline: none;
+}
+
+/* Inline forms (used with multiple buttons in same row) */
+form.inline-reject {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border: none;
+    display: inline;
+    
+    }
+    
+    .button-container {
+    text-align: center;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px; 
+    margin-top: 20px;
+}
+
+.btn-group button {
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    
+    
+
+        button[name="pass"][value="true"]:hover {
+            background-color: #43a047;
+        }
+
+        button[name="pass"][value="false"] {
+            background-color: #ef5350;
+        }
+
+        button[name="pass"][value="false"]:hover {
+            background-color: #d32f2f;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            text-decoration: none;
+    		color: #5e35b1;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }

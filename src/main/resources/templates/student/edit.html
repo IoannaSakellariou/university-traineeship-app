@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Student Profile</title>
+    <link rel="stylesheet" th:href="@{/css/edit.css}">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Student Profile</h1>
+
+        <p th:if="${student != null}" th:text="'Editing profile for ' + ${student.studentName}"></p>
+
+        <form th:action="@{/student/edit}" th:object="${student}" method="post">
+            <input type="hidden" th:field="*{id}" />
+
+            <label>Full Name:</label>
+            <input type="text" th:field="*{studentName}" required />
+
+            <label>Registration Number (AM):</label>
+            <input type="text" th:field="*{AM}" required />
+
+            <label>Average Grade:</label>
+            <input type="number" step="0.5" th:field="*{avgGrade}" required />
+
+            <label>Preferred Location:</label>
+            <input type="text" th:field="*{preferredLocation}" required />
+
+            <label>Interests:</label>
+            <textarea th:field="*{interests}" rows="3" required></textarea>
+
+            <label>Skills:</label>
+            <textarea th:field="*{skills}" rows="3" required></textarea>
+
+            <label>
+                <input type="checkbox" th:field="*{lookingForTraineeship}" />
+                Looking for Traineeship
+            </label>
+
+            <button type="submit">Save</button>
+        </form>
+
+        <div style="text-align: center;">
+    <a href="/student/dashboard" class="back">← Back to Dashboard</a>
+</div>
+    </div>
+</body>
+</html>

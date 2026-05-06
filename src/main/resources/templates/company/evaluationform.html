@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Company Evaluation</title>
+<link rel="stylesheet" th:href="@{/css/evaluation.css}">
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Evaluate Student</h2>
+    <form th:action="@{/company/evaluate}" method="post" th:object="${evaluation}">
+        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{traineeshipPosition.id}" />
+        <input type="hidden" th:field="*{evaluationType}" />
+        <input type="hidden" th:field="*{facilities}" value="0" />
+        <input type="hidden" th:field="*{guidance}" value="0" />
+
+        <label for="motivation">Motivation</label>
+        <select id="motivation" th:field="*{motivation}">
+            <option th:value="1">1 - Bad</option>
+            <option th:value="2">2</option>
+            <option th:value="3">3 - Average</option>
+            <option th:value="4">4</option>
+            <option th:value="5">5 - Perfect</option>
+        </select>
+
+        <label for="effectiveness">Effectiveness</label>
+        <select id="effectiveness" th:field="*{effectiveness}">
+            <option th:value="1">1 - Bad</option>
+            <option th:value="2">2</option>
+            <option th:value="3">3 - Average</option>
+            <option th:value="4">4</option>
+            <option th:value="5">5 - Perfect</option>
+        </select>
+
+        <label for="efficiency">Efficiency</label>
+        <select id="efficiency" th:field="*{efficiency}">
+            <option th:value="1">1 - Bad</option>
+            <option th:value="2">2</option>
+            <option th:value="3">3 - Average</option>
+            <option th:value="4">4</option>
+            <option th:value="5">5 - Perfect</option>
+        </select>
+
+        <button type="submit">Submit Evaluation</button>
+
+        <div class="back">
+            <a href="/company/dashboard">← Back to Dashboard</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

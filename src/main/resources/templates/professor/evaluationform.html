@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Evaluation Form</title>
+    <link rel="stylesheet" th:href="@{/css/common-style.css}">
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Evaluate Traineeship</h2>
+    <form th:action="@{/professor/evaluate}" method="post" th:object="${evaluation}">
+    	<input type="hidden" th:field="*{traineeshipPosition.id}"/>
+
+        <label for="motivation">Student Motivation</label>
+        <select id="motivation" th:field="*{motivation}">
+            <option th:value="1">1 - Bad</option>
+            <option th:value="2">2</option>
+            <option th:value="3">3 - Average</option>
+            <option th:value="4">4</option>
+            <option th:value="5">5 - Perfect</option>
+        </select>
+
+        <label for="effectiveness">Student Effectiveness</label>
+        <select id="effectiveness" th:field="*{effectiveness}">
+            <option th:value="1">1 - Bad</option>
+            <option th:value="2">2</option>
+            <option th:value="3">3 - Average</option>
+            <option th:value="4">4</option>
+            <option th:value="5">5 - Perfect</option>
+        </select>
+
+        <label for="efficiency">Student Efficiency</label>
+        <select id="efficiency" th:field="*{efficiency}">
+            <option th:value="1">1 - Bad</option>
+            <option th:value="2">2</option>
+            <option th:value="3">3 - Average</option>
+            <option th:value="4">4</option>
+            <option th:value="5">5 - Perfect</option>
+        </select>
+
+        <label for="facilities">Company Facilities</label>
+        <select id="facilities" th:field="*{facilities}">
+            <option th:value="1">1 - Bad</option>
+            <option th:value="2">2</option>
+            <option th:value="3">3 - Average</option>
+            <option th:value="4">4</option>
+            <option th:value="5">5 - Perfect</option>
+        </select>
+
+        <label for="guidance">Company Guidance</label>
+        <select id="guidance" th:field="*{guidance}">
+            <option th:value="1">1 - Bad</option>
+            <option th:value="2">2</option>
+            <option th:value="3">3 - Average</option>
+            <option th:value="4">4</option>
+            <option th:value="5">5 - Perfect</option>
+        </select>
+
+        <button type="submit">Submit Evaluation</button>
+    </form>
+
+    <div class="back-link">
+        <a href="/professor/dashboard">← Back to Dashboard</a>
+    </div>
+</div>
+
+</body>
+</html>

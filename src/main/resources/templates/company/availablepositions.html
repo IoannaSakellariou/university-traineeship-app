@@ -1,0 +1,56 @@
+<!-- templates/company/my-positions.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Traineeship Positions</title>
+<link rel="stylesheet" th:href="@{/css/common-style.css}">
+
+</head>
+<body>
+
+<h2>Advertised Traineeship Positions</h2>
+
+<a href="/company/createposition" class="button">+ Add New Position</a>
+
+<table>
+    <thead>
+    	
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Topics</th>
+            <th>Skills</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="pos : ${positions}">
+            <td th:text="${pos.title}">Title</td>
+            <td th:text="${pos.description}">Description</td>
+            <td th:text="${pos.fromDate}">From</td>
+            <td th:text="${pos.toDate}">To</td>
+            <td th:text="${pos.topics}">Topics</td>
+            <td th:text="${pos.skills}">Skills</td>
+            <td th:text="${pos.assigned ? 'Assigned' : 'Available'}">Status</td>
+            <td>
+                <!-- Delete Button -->
+                <form th:action="@{/company/deleteposition/{id}(id=${pos.id})}" method="post">
+				    <input type="hidden" name="_method" value="delete" />
+				    <button type="submit" class="delete">Delete</button>
+				</form>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div style="text-align: center;">
+    <a class="back" href="/company/dashboard">← Back to Dashboard</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Applications</title>
+    <link rel="stylesheet" th:href="@{/css/common-style.css}">
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Applications to Traineeship Positions</h2>
+    
+    <!-- FLASH MESSAGES -->
+	<div th:if="${success}" class="alert alert-success" style="color: green; margin-bottom: 20px;">
+	    <p th:text="${success}"></p>
+	</div>
+	
+	<div th:if="${error}" class="alert alert-danger" style="color: red; margin-bottom: 20px;">
+	    <p th:text="${error}"></p>
+	</div>
+	    
+
+    <table>
+        <thead>
+        <tr>
+            <th>Student Name</th>
+		    <th>AM</th>
+		    <th>Skills</th>
+		    <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tbody>
+			<tr th:each="student : ${students}" th:if="${student != null}">
+			    <td th:text="${student.studentName}">Student Name</td>
+			    <td th:text="${student.AM}">AM</td>
+			    <td th:text="${student.skills}">Skills</td>
+			    <td>
+			        <a th:href="@{'/committeemember/suggestpositions/' + ${student.id} + '?strategy=both'}">
+			            <button class="view-btn">Suggest Positions</button>
+			        </a>
+			    </td>
+			</tr>
+		</tbody>
+
+        </tbody>
+    </table>
+
+    <div class="back-link">
+        <a href="/committeemember/dashboard">← Back to Dashboard</a>
+    </div>
+</div>
+
+<!-- Modals -->
+<div th:each="pos : ${positions}">
+    <div th:each="applicant : ${pos.applicants}">
+        <div class="modal" th:id="'modal-' + ${pos.id} + '-' + ${applicant.id}">
+            <div class="modal-content">
+                <span class="close" th:onclick="'hideModal(' + ${pos.id} + '-' + ${applicant.id} + ')'">&times;</span>
+                <h3>Applicant Details</h3>
+                <p><strong>Name:</strong> <span th:text="${applicant.studentName}"></span></p>
+                <p><strong>AM:</strong> <span th:text="${applicant.AM}"></span></p>
+                <p><strong>Skills:</strong> <span th:text="${applicant.skills}"></span></p>
+                <p><strong>Interests:</strong> <span th:text="${applicant.interests}"></span></p>
+                <p><strong>Average Grade:</strong> <span th:text="${applicant.avgGrade}"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showModal(id) {
+        document.getElementById('modal-' + id).style.display = "block";
+    }
+
+    function hideModal(id) {
+        document.getElementById('modal-' + id).style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        document.querySelectorAll('.modal').forEach(function(modal) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    };
+</script>
+
+</body>
+</html>

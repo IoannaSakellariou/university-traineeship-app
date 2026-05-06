@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Traineeship Positions</title>
+    <link rel="stylesheet" th:href="@{/css/common-style.css}">
+
+</head>
+<body>
+
+<div class="container">
+    <h1>Available Traineeship Positions</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Company</th>
+            <th>Topics</th>
+            <th>Skills</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pos : ${positions}">
+            <td th:text="${pos.title}"></td>
+            <td th:text="${pos.company != null ? pos.company.companyName : 'N/A'}"></td>
+
+            <td th:text="${pos.topics}"></td>
+            <td th:text="${pos.skills}"></td>
+            <td>
+                <form th:action="@{'/student/apply/' + ${pos.id}}" method="post">
+				    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+				    <button type="submit">Apply</button>
+				</form>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div style="text-align: center;">
+	    <a href="/student/dashboard" class="back">← Back to Dashboard</a>
+	</div>
+</div>
+
+</body>
+</html>

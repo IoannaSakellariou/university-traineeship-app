@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+
+</head>
+<body>
+
+<header>
+    <h1>Welcome, <span sec:authentication="name"></span>!</h1>
+</header>
+
+<div class="container">
+    <div class="dashboard-box">
+        <h2>Professor Dashboard</h2>
+
+        <div class="button-group">
+            <a href="/professor/edit" class="btn">Edit Profile</a>
+            <a href="/professor/supervisedpositions" class="btn">View Supervised Positions</a>
+            <form action="/logout" method="post" style="margin: 0;">
+                <button type="submit" class="btn logout-btn">Logout</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 TraineeshipApp – All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

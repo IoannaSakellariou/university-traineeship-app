@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>In-Progress Traineeships</title>
+    <link rel="stylesheet" th:href="@{/css/common-style.css}">
+</head>
+<body>
+
+<div class="container">
+    <h2>In-Progress Traineeships</h2>
+
+    <!-- Αν δεν υπάρχουν θέσεις -->
+    <div th:if="${#lists.isEmpty(positions)}" style="text-align: center; margin-top: 20px;">
+        <p>No internships are currently in progress.</p>
+        <div class="back-link">
+            <a href="/committeemember/dashboard">← Back to Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Αν υπάρχουν θέσεις -->
+    <div th:unless="${#lists.isEmpty(positions)}">
+        <table>
+            <thead>
+                <tr>
+                    <th>Position Title</th>
+                    <th>Company</th>
+                    <th>Student</th>
+                    <th>Professor</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="position : ${positions}">
+                    <td th:text="${position.title != null ? position.title : 'N/A'}">Title</td>
+                    <td th:text="${position.company != null ? position.company.companyName : 'N/A'}">Company</td>
+                    <td th:text="${position.student != null ? position.student.studentName : 'N/A'}">Student</td>
+                    <td th:text="${position.supervisor != null ? position.supervisor.professorName : 'Unassigned'}">Professor</td>
+                    <td th:text="${position.completed} ? 'Completed - ' + (position.passFailGrade ? 'PASS' : 'FAIL') : 'In Progress'">Status</td>
+                    <td>
+                        <a th:if="${!position.completed}" th:href="@{/committeemember/evaluate/{id}(id=${position.id})}">View Evaluations</a>
+                        <span th:if="${position.completed}">Already Completed</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="back-link">
+            <a href="/committeemember/dashboard">← Back to Dashboard</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Applications</title>
+    <link rel="stylesheet" th:href="@{/css/common-style.css}">
+
+</head>
+<body>
+
+<h1>My Internship Applications</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Topics</th>
+            <th>Skills</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="pos : ${positions}">
+            <td th:text="${pos.title}">Title</td>
+            <td th:text="${pos.description}">Description</td>
+            <td th:text="${pos.fromDate}">From</td>
+            <td th:text="${pos.toDate}">To</td>
+            <td th:text="${pos.topics}">Topics</td>
+            <td th:text="${pos.skills}">Skills</td>
+            <td th:if="${pos.assigned}">
+			    <span th:if="${pos.completed}">
+			        Completed - 
+			        <span th:if="${pos.passFailGrade == true}">PASS</span>
+			        <span th:if="${pos.passFailGrade == false}">FAIL</span>
+			        <span th:if="${pos.passFailGrade == null}">[No grade]</span>
+			    </span>
+			    <span th:unless="${pos.completed}">Assigned - In Progress</span>
+			</td>
+			<td th:unless="${pos.assigned}">Pending</td>
+
+
+        </tr>
+    </tbody>
+</table>
+
+<div style="text-align: center;">
+    <a href="/student/dashboard" class="back">← Back to Dashboard</a>
+</div>
+
+</body>
+</html>

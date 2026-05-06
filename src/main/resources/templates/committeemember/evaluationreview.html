@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Evaluations</title>
+    <link rel="stylesheet" th:href="@{/css/common-style.css}">
+    
+
+</head>
+<body>
+
+<div class="container">
+    <h2 th:text="'Evaluations for: ' + ${position.title}"></h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Evaluator</th>
+            <th>Student Motivation</th>
+            <th>Student Effectiveness</th>
+            <th>Student Efficiency</th>
+            <th>Company Facilities</th>
+            <th>Company Guidance</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="eval : ${evaluations}">
+            <td th:text="${eval.evaluationType}"></td>
+            <td th:text="${eval.motivation}"></td>
+            <td th:text="${eval.effectiveness}"></td>
+            <td th:text="${eval.efficiency}"></td>
+            <td th:text="${eval.facilities}"></td>
+            <td th:text="${eval.guidance}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form th:action="@{/committeemember/complete/{id}(id=${position.id})}" method="post">
+	    <div class="btn-group">
+	        <button type="submit" name="pass" value="true" style="background-color: #66bb6a;">Complete as PASS</button>
+	        <button type="submit" name="pass" value="false" style="background-color: #ef5350;">Complete as FAIL</button>
+	    </div>
+	</form>
+
+
+    <div class="back-link">
+        <a href="/committeemember/dashboard">← Back to Dashboard</a>
+    </div>
+</div>
+
+</body>
+</html>
